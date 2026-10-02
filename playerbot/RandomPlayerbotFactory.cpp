@@ -1079,7 +1079,9 @@ void RandomPlayerbotFactory::CreateRandomGuilds()
 
     if (availableLeaders.empty())
     {
-        sLog.outError("No leaders for random guilds available");
+        // transient: no eligible bot (online, level >= 10, guildless) is available yet while bots log in.
+        // Must return here because the loop below indexes into availableLeaders.
+        sLog.outDebug("No leaders for random guilds available");
         return;
     }
 
@@ -1096,6 +1098,10 @@ void RandomPlayerbotFactory::CreateRandomGuilds()
 
         std::string guildName = CreateRandomGuildName();
         if (guildName.empty())
+            continue;
+
+        // the name may have been taken by a concurrent guild creation; skip quietly instead of failing
+        if (sGuildMgr.GetGuildByName(guildName))
             continue;
 
         int index = urand(0, availableLeaders.size() - 1);

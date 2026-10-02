@@ -736,8 +736,7 @@ void PlayerbotFactory::InitPetSpells()
             // Screech
             {8,  24423},
             {24, 24577},
-            {40, 24578},
-            {56, 27051}
+            {40, 24578}
         };
 
         hunterPetSpells[PET_BEAR] = {
@@ -831,8 +830,7 @@ void PlayerbotFactory::InitPetSpells()
             // Screech
             {8,  24423},
             {24, 24577},
-            {40, 24578},
-            {56, 27051}
+            {40, 24578}
         };
 
         hunterPetSpells[PET_CAT] = {
