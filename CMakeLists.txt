@@ -206,3 +206,8 @@ set_target_properties(${LIBRARY_NAME} PROPERTIES PROJECT_LABEL "PlayerBots")
 if(PCH)
   target_precompile_headers(${LIBRARY_NAME} PRIVATE ${bots_PCH})
 endif()
+
+# Treat source and execution charset as UTF-8 to avoid C4819 on non-UTF-8 system locales
+if(MSVC)
+  target_compile_options(${LIBRARY_NAME} PRIVATE /utf-8)
+endif()
