@@ -196,7 +196,7 @@ bool RpgTaxiAction::Execute(Event& event)
     Creature* flightMaster = bot->GetNPCIfCanInteractWith(guidP, UNIT_NPC_FLAG_FLIGHTMASTER);
     if (!flightMaster)
     {
-        sLog.outError("Bot %s cannot talk to flightmaster (%zu location available)", bot->GetName(), nodes.size());
+        sLog.outDebug("Bot %s cannot talk to flightmaster (%zu location available)", bot->GetName(), nodes.size());
         return false;
     }
 #ifdef MANGOSBOT_TWO                
